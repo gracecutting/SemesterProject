@@ -6,6 +6,12 @@ body
 {
     color:F7DAD9;
 }
+circle
+{
+   color:F7DAD9; 
+}
+
+
 
 #indexheader
 {
@@ -14,8 +20,54 @@ body
     text-align: center;
     color:F7DAD9;
     border: 5px solid;
+    border-radius: 10px;
     height: 55px;
 }
+#indexbody
+{
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom:100px;
+    border: 5px solid;
+    border-radius: 10px;
+    border-color: 443730;
+    padding: 10px;
+}
+#sources
+{
+    text-align: center;
+    border: 5px solid;
+    border-radius: 10px;
+    height: 20px;
+    width: 120px;  
+    margin-bottom: 10px;
+    margin-left: 350px;
+}
+#dashboard
+{
+    text-align: center;
+    border: 5px solid;
+    border-radius: 10px;
+    height: 20px;
+    width: 120px;
+    margin-bottom: 10px;
+    margin-left: 650px;
+}
+#visualargument
+{
+    text-align: center;
+    border: 5px solid;
+    border-radius: 10px;
+    height: 20px;
+    width: 120px;  
+    margin-bottom: 10px; 
+    margin-right: 350px;
+    float: right;
+}
+
+
+
 
 #dashheader
 {
@@ -24,35 +76,65 @@ body
     text-align: center;
     color:F7DAD9;
     border: 5px solid;
+    border-radius: 10px;
     height: 55px;
 }
 #arabicadiv
 {
     border: 5px solid;
+    border-radius: 10px;
+    border-color: 443730;
     height: 425px;
-    width: 525px;
+    width: 625px;
     margin-bottom: 20px;
+    margin-left: 20px;
+}
+categories.onyear
+{
+    color: 550C18;
 }
 
 #robustadiv
 {
     border: 5px solid;
+    border-radius: 10px;
+    border-color: 443730;
     height: 425px;
-    width: 525px;
+    width: 625px;
+    margin-bottom: 20px;
+    margin-right: 20px;
     float: right;
     
 }
 #totaldiv
 {
     border: 5px solid;
+    border-radius: 10px;
+    border-color: 443730;
     height: 425px;
-    width: 525px; 
+    width: 625px; 
+    margin-bottom: 20px;
+    margin-left: 20px;
 }
 #tempdiv
 {
     border: 5px solid;
+    border-radius: 10px;
+    border-color: 443730;
     height: 425px;
-    width: 525px; 
+    width: 625px; 
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+#return1
+{
+    text-align: center;
+    border: 5px solid;
+    border-radius: 10px;
+    height: 20px;
+    width: 160px;
+    
 }
 
 
@@ -63,6 +145,7 @@ body
     text-align: center;
     color:F7DAD9;
     border: 5px solid;
+    border-radius: 10px;
     height: 55px;
 }
 #PS
@@ -70,21 +153,31 @@ body
     font-weight: bold;
     text-align: center;
     border: 5px solid;
+    border-radius: 10px;
     padding: 10px;
     width: 800px;
+    margin-left: 300px;
 }
 #SS
 {
     text-align: center;
     border: 5px solid;
+    border-radius: 10px;
     padding: 10px; 
     width: 800px;
+    margin-left: 300px;
 }
 #SupportingSources h4
 {
     color:443730;
     font-weight: bold;
 }
+
+
+
+
+
+
 
 #vaheader
 {
@@ -93,11 +186,13 @@ body
     text-align: center;
     color:F7DAD9;
     border: 5px solid;
+    border-radius: 10px;
     height: 55px;
 }
 #BPC
 {
     border: 5px solid ;
+    border-radius: 10px;
     padding: 10px;
     height: 300px;
     width: 300px;
@@ -111,6 +206,7 @@ body
 #FT
 {
     border: 5px solid ;
+    border-radius: 10px;
     padding: 10px;
     height: 300px;
     width: 300px; 
@@ -120,36 +216,11 @@ body
     color:443730;
     font-weight: bold, 
 }
-
-#sources
+#vadiv
 {
-    text-align: center;
-    border: 5px solid;
-    height: 20px;
-    width: 120px;  
-    margin-bottom: 10px;
-}
-
-#dashboard
-{
-    text-align: center;
-    border: 5px solid;
-    height: 20px;
-    width: 120px;
-    margin-bottom: 10px;
-}
-
-#visualargument
-{
-    text-align: center;
-    border: 5px solid;
-    height: 20px;
-    width: 120px;  
-    margin-bottom: 10px; 
-}
-
-#return1
-{
-    color:443730;
-    font-weight: bold, 
+    border: 5px solid ;
+    border-radius: 10px;
+    padding: 10px;
+    width: 850px;
+    float: right;
 }

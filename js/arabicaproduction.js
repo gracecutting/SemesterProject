@@ -1,5 +1,45 @@
+//counties is the array of data
 //target is the selection of the g element to place the graph in
 //xscale,yscale are the x and y scales.
+var drawArabicaPlot = function(marketyear,target,
+                         xScale,yScale)
+{
+    target.selectAll("circle")
+          .data(marketyear)
+          .enter()
+          .append("circle")
+          .attr("cx",function(marketyear)
+          {
+            return xScale(marketyear.MarketYear);   
+          })
+          .attr("cy",function(marketyear)
+          {
+            return yScale(marketyear.Total);    
+          })
+          .attr("r",3)
+    //tooltip on
+          target.on("mouseeneter", function(marketyear)
+          {
+              var xPos = d3.event.pageX;
+              var yPos = d3.event.pageY;
+        
+            d3.select("#arabicatooltip")
+              .classed("hidden",false)
+              .style("top",yPos+"px")
+              .style("left",xPos+"px")
+        
+            d3.select("#arabicatotal")
+              .text(marketyear.Total);
+          })
+    //tooltip off
+          .on("mouseleave", function()
+            {
+                d3.select("#arabicatooltip")
+                  .classed("hidden",true);
+    })
+    
+}
+
 //graphDim is an object that describes the width and height of the graph area.
 //margins is an object that describes the space around the graph
 //xScale and yScale are the scales for the x and y scale.
@@ -90,7 +130,7 @@ var drawArabicaLegend = function(graphDim,margins)
     entries.append("circle")
            .attr("cx",8)
            .attr("cy",5)
-           .attr("r",5)
+           .attr("r",3)
            .attr("class", function(stat)
             {
                 return stat.class
@@ -132,15 +172,13 @@ var initArabicaGraph = function(marketyear)
                         margins.top+")");
     
     
-    var xScale = d3.scaleBand()
+    var xScale = d3.scalePoint()
         .domain(["2015/16","2016/17","2017/18","2018/19"])
         .range([0,graph.width]);
    
     
-    var maxcoffee = d3.max(marketyear,function(year){return parseInt(year.Total)})   
-    
     var yScale = d3.scaleLinear()
-        .domain([0,maxcoffee])
+        .domain([0,110000])
         .range([graph.height,0])
    
     //define line generator
@@ -150,13 +188,14 @@ var initArabicaGraph = function(marketyear)
 
 
     target.append("path")
-        .datum(marketyear)
-        .attr("class", "line")
-        .attr("d",line)
-        .attr("fill", "none")
-        .attr("stroke", "black")
+          .datum(marketyear)
+          .attr("class", "line")
+          .attr("d",line)
+          .attr("fill", "none")
+          .attr("stroke", "black")
     
  
+    drawArabicaPlot(marketyear,target,xScale,yScale);
     drawArabicaAxes(graph,margins,xScale,yScale);
     drawArabicaLabels(graph,margins);
     drawArabicaLegend(graph,margins);  

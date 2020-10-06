@@ -102,7 +102,7 @@ var drawTempLegend = function(graphDim,margins)
     entries.append("circle")
            .attr("cx",8)
            .attr("cy",5)
-           .attr("r",5)
+           .attr("r",3)
            .attr("class", function(stat)
             {
                 return stat.class
@@ -144,29 +144,85 @@ var initTempGraph = function(temperature)
                         margins.top+")");
     
     
-    var xScale = d3.scaleBand()
+    var xScale = d3.scalePoint()
         .domain(["2015","2016","2017","2018"])
         .range([0,graph.width]);
-   
-    
-   // var maxcoffee = d3.max(marketyear,function(year){return parseInt(year.Total)})   
+      
     
     var yScale = d3.scaleLinear()
         .domain([22,27])
         .range([graph.height,0])
    
-    //define line generator
+    
+    //Brazil line
     var line = d3.line()
-             .x(function(temperature) {return xScale(temperature.MarketYear)})
-             .y(function(marketyear) {return yScale(temperature.Total)});
+             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
+             .y(function(temperature) {return yScale(temperature[0])});
 
 
     target.append("path")
-        .datum(temperature)
-        .attr("class", "line")
-        .attr("d",line)
-        .attr("fill", "none")
-        .attr("stroke", "black")
+          .append("g")
+          .datum(temperature)
+          .attr("class", "line")
+          .attr("d",line)
+          .attr("fill", "none")
+          .attr("stroke", "black")
+    
+    //Colombia line
+     var line = d3.line()
+             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
+             .y(function(temperature) {return yScale(temperature[1])});
+
+
+    target.append("path")
+          .append("g")
+          .datum(temperature)
+          .attr("class", "line")
+          .attr("d",line)
+          .attr("fill", "none")
+          .attr("stroke", "black")
+    
+    //Ethiopia line
+     var line = d3.line()
+             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
+             .y(function(temperature) {return yScale(temperature[2])});
+
+
+    target.append("path")
+          .append("g")
+          .datum(temperature)
+          .attr("class", "line")
+          .attr("d",line)
+          .attr("fill", "none")
+          .attr("stroke", "black")
+    
+    //Indonesia line
+     var line = d3.line()
+             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
+             .y(function(temperature) {return yScale(temperature[3])});
+
+
+    target.append("path")
+          .append("g")
+          .datum(temperature)
+          .attr("class", "line")
+          .attr("d",line)
+          .attr("fill", "none")
+          .attr("stroke", "black")
+    
+    //Vietnam line
+     var line = d3.line()
+             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
+             .y(function(temperature) {return yScale(temperature[4])});
+
+
+    target.append("path")
+          .append("g")
+          .datum(temperature)
+          .attr("class", "line")
+          .attr("d",line)
+          .attr("fill", "none")
+          .attr("stroke", "black")
     
  
     drawTempAxes(graph,margins,xScale,yScale);
