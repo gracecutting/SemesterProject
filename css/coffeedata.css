@@ -1,0 +1,144 @@
+*
+{
+   background-color:786452
+}
+body
+{
+    color:F7DAD9;
+}
+
+#indexheader
+{
+    background-image: url(https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&h=650&w=940);
+    font-size:48px;
+    text-align: center;
+    color:F7DAD9;
+    border: 5px solid;
+    height: 55px;
+}
+
+#dashheader
+{
+    background-image: url(https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&h=650&w=940);
+    font-size: 48px;
+    text-align: center;
+    color:F7DAD9;
+    border: 5px solid;
+    height: 55px;
+}
+#arabicadiv
+{
+    border: 5px solid;
+    height: 650px;
+    width: 800px;
+    margin-bottom: 20px;
+}
+
+#robustadiv
+{
+    border: 5px solid;
+    height: 650px;
+    width: 600px;
+    float: right;
+    
+}
+
+#totaldiv
+{
+   border: 5px solid;
+    height: 650px;
+    width: 800px; 
+}
+
+
+#sourceheader
+{
+    background-image: url(https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&h=650&w=940);
+    font-size: 48px;
+    text-align: center;
+    color:F7DAD9;
+    border: 5px solid;
+    height: 55px;
+}
+#PS
+{
+    font-weight: bold;
+    text-align: center;
+    border: 5px solid;
+    padding: 10px;
+    width: 800px;
+}
+#SS
+{
+    text-align: center;
+    border: 5px solid;
+    padding: 10px; 
+    width: 800px;
+}
+#SupportingSources h4
+{
+    color:443730;
+    font-weight: bold;
+}
+
+#vaheader
+{
+    background-image: url(https://images.pexels.com/photos/1695052/pexels-photo-1695052.jpeg?auto=compress&cs=tinysrgb&h=650&w=940);
+    font-size: 48px;
+    text-align: center;
+    color:F7DAD9;
+    border: 5px solid;
+    height: 55px;
+}
+#BPC
+{
+    border: 5px solid ;
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+    margin-bottom: 20px;
+}
+#BPC h3
+{
+    color:443730;
+    font-weight: bold,
+} 
+#FT
+{
+    border: 5px solid ;
+    padding: 10px;
+    height: 300px;
+    width: 300px; 
+}
+#FT h3
+{
+    color:443730;
+    font-weight: bold, 
+}
+
+#sources
+{
+    text-align: center;
+    border: 5px solid;
+    height: 20px;
+    width: 120px;  
+    margin-bottom: 10px;
+}
+
+#dashboard
+{
+    text-align: center;
+    border: 5px solid;
+    height: 20px;
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+#visualargument
+{
+   text-align: center;
+    border: 5px solid;
+    height: 20px;
+    width: 120px;  
+    margin-bottom: 10px; 
+}
