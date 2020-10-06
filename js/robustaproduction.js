@@ -108,9 +108,9 @@ var drawRobustaLegend = function(graphDim,margins)
 var initRobsutaGraph = function(marketyear)
 {
     //size of screen
-    var screen = {width:800,height:600}
+    var screen = {width:600,height:400}
     //how much space on each side
-    var margins = {left:50,right:150,top:40,bottom:40}
+    var margins = {left:65,right:150,top:40,bottom:40}
     
     
     

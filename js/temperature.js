@@ -3,17 +3,17 @@
 //graphDim is an object that describes the width and height of the graph area.
 //margins is an object that describes the space around the graph
 //xScale and yScale are the scales for the x and y scale.
-var drawTotalAxes = function(graphDim,margins,
+var drawTempAxes = function(graphDim,margins,
                          xScale,yScale)
 {
     var xAxis = d3.axisBottom(xScale)
-    d3.select("#totalgraph")
+    d3.select("#tempgraph")
       .append("g")
       .attr("transform","translate("+margins.left+","+(graphDim.height+margins.top)+")")
       .call(xAxis)
     
     var yAxis = d3.axisLeft(yScale)
-    d3.select("#totalgraph")
+    d3.select("#tempgraph")
       .append("g")
       .attr("transform","translate("+margins.left+","+(margins.top)+")")
       .call(yAxis)
@@ -21,16 +21,16 @@ var drawTotalAxes = function(graphDim,margins,
 
 //graphDim -object that stores dimensions of the graph area
 //margins - object that stores the size of the margins
-var drawTotalLabels = function(graphDim,margins)
+var drawTempLabels = function(graphDim,margins)
 {
   
-    var labels = d3.select("#totalgraph") 
+    var labels = d3.select("#tempgraph") 
                    .append("g")
                    .classed("labels", true)
     
     //title
     labels.append("text")
-          .text("Total Coffee Production")
+          .text("Average Temperature")
           .classed("title",true)
           .attr("text-anchor","middle")
           .attr("x", margins.left+(graphDim.width/2))
@@ -38,7 +38,7 @@ var drawTotalLabels = function(graphDim,margins)
     
     //x-axis
     labels.append("text")
-          .text("Market Year")
+          .text("Year")
           .classed("label", true)
           .attr("text-anchor","middle")
           .attr("x", margins.left+(graphDim.width/2))
@@ -48,29 +48,41 @@ var drawTotalLabels = function(graphDim,margins)
     labels.append("g")
           .attr("transform","translate(5,"+(margins.top+(graphDim.height/2))+")")
           .append("text")
-          .text("Production (in thousand 60-kg bags)")
+          .text("Temperature (in Celcius)")
           .classed("label", true)
           .attr("text-anchor","middle")
           .attr("transform","rotate(90)")
 }
 
 
-var drawTotalLegend = function(graphDim,margins)
+var drawTempLegend = function(graphDim,margins)
 {
-    var legend = d3.select("#totalgraph")
+    var legend = d3.select("#tempgraph")
                    .append("g")
                    .classed("legend",true)
                    .attr("transform", "translate("+(margins.left)+","+(margins.top)+")");
     
     var categories = [
         {
-            class:"offyear",
-            name:"Off Year"
+            class:"brazil",
+            name:"Brazil"
         },
         {
-            class:"onyear",
-            name:"On Year"
-        }
+            class:"colombia",
+            name:"Colombia"
+        },
+        {
+            class:"ethiopia",
+            name:"Ethiopia"
+        },
+        {
+            class:"indonesia",
+            name:"Indonesia"
+        },
+        {
+            class:"vietnam",
+            name:"Vietnam"
+        },
     ]
     
     var entries = legend.selectAll("g")
@@ -105,7 +117,7 @@ var drawTotalLegend = function(graphDim,margins)
     .attr("y",10)
 }
 //sets up several important variables and calls the functions for the visualization.
-var initTotalGraph = function(marketyear)
+var initTempGraph = function(temperature)
 {
     //size of screen
     var screen = {width:600,height:400}
@@ -120,12 +132,12 @@ var initTotalGraph = function(marketyear)
             height:screen.height - margins.top-margins.bottom
         }
     console.log(graph);
-
-    d3.select("#totalgraph")
+   
+    d3.select("#tempgraph")
     .attr("width",screen.width)
     .attr("height",screen.height)
     
-    var target = d3.select("#totalgraph")
+    var target = d3.select("#tempgraph")
     .append("g")
     .attr("transform",
           "translate("+margins.left+","+
@@ -133,51 +145,51 @@ var initTotalGraph = function(marketyear)
     
     
     var xScale = d3.scaleBand()
-        .domain(["2015/16","2016/17","2017/18","2018/19"])
+        .domain(["2015","2016","2017","2018"])
         .range([0,graph.width]);
    
     
-    var maxcoffee = d3.max(marketyear,function(year){return parseInt(year.Total)})   
+   // var maxcoffee = d3.max(marketyear,function(year){return parseInt(year.Total)})   
     
     var yScale = d3.scaleLinear()
-        .domain([0,maxcoffee])
+        .domain([22,27])
         .range([graph.height,0])
    
     //define line generator
     var line = d3.line()
-             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
-             .y(function(marketyear) {return yScale(marketyear.Total)});
+             .x(function(temperature) {return xScale(temperature.MarketYear)})
+             .y(function(marketyear) {return yScale(temperature.Total)});
 
 
     target.append("path")
-        .datum(marketyear)
+        .datum(temperature)
         .attr("class", "line")
         .attr("d",line)
         .attr("fill", "none")
         .attr("stroke", "black")
     
  
-    drawTotalAxes(graph,margins,xScale,yScale);
-    drawTotalLabels(graph,margins);
-    drawTotalLegend(graph,margins);  
+    drawTempAxes(graph,margins,xScale,yScale);
+    drawTempLabels(graph,margins);
+    drawTempLegend(graph,margins);  
     
 }
 
 
 
 
-var totalPromise = d3.csv("../csv/totalproduction.csv")
+var tempPromise = d3.csv("../csv/temperature.csv")
 
-var totalSuccessFCN = function(marketyear)
+var tempSuccessFCN = function(temperature)
 {
-    console.log("marketyear", marketyear);
-    initTotalGraph(marketyear)
+    console.log("temperature", temperature);
+    initTempGraph(temperature)
 
 }
 
-var totalFailFCN = function (error)
+var tempFailFCN = function (error)
 {
     console.log("error", error);
 }
 
-totalPromise.then(totalSuccessFCN,totalFailFCN);
+tempPromise.then(tempSuccessFCN,tempFailFCN);

@@ -29,25 +29,30 @@ body
 #arabicadiv
 {
     border: 5px solid;
-    height: 650px;
-    width: 800px;
+    height: 425px;
+    width: 525px;
     margin-bottom: 20px;
 }
 
 #robustadiv
 {
     border: 5px solid;
-    height: 650px;
-    width: 600px;
+    height: 425px;
+    width: 525px;
     float: right;
     
 }
-
 #totaldiv
 {
-   border: 5px solid;
-    height: 650px;
-    width: 800px; 
+    border: 5px solid;
+    height: 425px;
+    width: 525px; 
+}
+#tempdiv
+{
+    border: 5px solid;
+    height: 425px;
+    width: 525px; 
 }
 
 
@@ -136,9 +141,15 @@ body
 
 #visualargument
 {
-   text-align: center;
+    text-align: center;
     border: 5px solid;
     height: 20px;
     width: 120px;  
     margin-bottom: 10px; 
+}
+
+#return1
+{
+    color:443730;
+    font-weight: bold, 
 }
