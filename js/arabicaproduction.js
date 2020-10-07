@@ -16,10 +16,10 @@ var drawArabicaPlot = function(marketyear,target,
           {
             return yScale(marketyear.Total);    
           })
-          .attr("r",3)
+          .attr("r",8)
           .attr("class",function(marketyear)
           {
-            if(marketyear.Total>100000)
+            if(marketyear.Total>100)
             {
                 return "onyear"
             }
@@ -40,7 +40,7 @@ var drawArabicaPlot = function(marketyear,target,
               .style("left",xPos+"px")
         
             d3.select("#arabicatotal")
-              .text(marketyear.Total);
+              .text(marketyear.Total+" hundred thousand 60-kg bags");
           })
     //tooltip off
           .on("mouseleave", function()
@@ -84,7 +84,7 @@ var drawArabicaLabels = function(graphDim,margins)
           .text("Arabica Coffee Production")
           .classed("title",true)
           .attr("text-anchor","middle")
-          .attr("x", margins.left+(graphDim.width/2))
+          .attr("x", (margins.left+10)+(graphDim.width/2))
           .attr("y", margins.top)
     
     //x-axis
@@ -97,7 +97,7 @@ var drawArabicaLabels = function(graphDim,margins)
     
     //y-axis
     labels.append("g")
-          .attr("transform","translate(5,"+(margins.top+(graphDim.height/2))+")")
+          .attr("transform","translate(10,"+(margins.top+(graphDim.height/2))+")")
           .append("text")
           .text("Production (in thousand 60-kg bags)")
           .classed("label", true)
@@ -139,7 +139,7 @@ var initArabicaGraph = function(marketyear)
    
     
     var yScale = d3.scaleLinear()
-        .domain([0,110000])
+        .domain([0,180])
         .range([graph.height,0])
    
     //define line generator

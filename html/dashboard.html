@@ -1,15 +1,18 @@
 <html>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap">
+<link rel="stylesheet" href="../css/coffeedata.css">   
     
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/coffeedata.css">
 </head>
     
 <body>
-    <h1 id="dashheader">Dashboard</h1>
+    <h1 id="dashheader">Trends in Coffee Production Graphs</h1>
     
     <div id="container1">
+    <div id="productioncycle">
+        <p>Arabica trees have a biennial bearing cycle which means they tend to alternate heavy crop and light crop years. The legend specifies the color that coordinates with the cycle year.</p>
+    </div>
     <div id="legend">
         <h3>Legend for Biennial Cycle</h3>
         <ul>
@@ -56,7 +59,6 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="../js/arabicaproduction.js"></script>
     <script src="../js/robustaproduction.js"></script>
-    <script src="../js/temperature.js"></script>
     <script src="../js/totalproduction.js"></script>
     
     <div id="return1">

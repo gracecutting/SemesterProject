@@ -15,7 +15,7 @@ var drawRobustaPlot = function(marketyear,target,
           {
             return yScale(marketyear.Total);    
           })
-          .attr("r",3)
+          .attr("r",8)
     //tooltip on
           .on("mouseenter", function(marketyear)
           {
@@ -28,7 +28,7 @@ var drawRobustaPlot = function(marketyear,target,
               .style("left",xPos+"px")
         
             d3.select("#robustatotal")
-              .text(marketyear.Total);
+              .text(marketyear.Total+" hundred thousand 60-kg bags");
           })
     //tooltip off
           .on("mouseleave", function()
@@ -68,10 +68,10 @@ var drawRobustaLabels = function(graphDim,margins)
     
     //title
     labels.append("text")
-          .text("Robusta Coffee Production-No Biennial Cycle")
+          .text("Robusta Coffee Production")
           .classed("title",true)
           .attr("text-anchor","middle")
-          .attr("x", margins.left+(graphDim.width/2))
+          .attr("x", (margins.left+20)+(graphDim.width/2))
           .attr("y", margins.top)
     
     //x-axis
@@ -84,7 +84,7 @@ var drawRobustaLabels = function(graphDim,margins)
     
     //y-axis
     labels.append("g")
-          .attr("transform","translate(5,"+(margins.top+(graphDim.height/2))+")")
+          .attr("transform","translate(10,"+(margins.top+(graphDim.height/2))+")")
           .append("text")
           .text("Production (in thousand 60-kg bags)")
           .classed("label", true)
@@ -126,7 +126,7 @@ var initRobsutaGraph = function(marketyear)
    
     
     var yScale = d3.scaleLinear()
-        .domain([0,80000])
+        .domain([0,180])
         .range([graph.height,0])
    
     //define line generator

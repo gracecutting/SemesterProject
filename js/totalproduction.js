@@ -15,7 +15,18 @@ var drawTotalPlot = function(marketyear,target,
           {
             return yScale(marketyear.Total);    
           })
-          .attr("r",3)
+          .attr("r",8)
+          .attr("class",function(marketyear)
+          {
+            if(marketyear.Total>160)
+            {
+                return "onyear"
+            }
+            else
+            {
+                return "offyear"
+            }
+          })
     //tooltip on
           .on("mouseenter", function(marketyear)
           {
@@ -28,7 +39,7 @@ var drawTotalPlot = function(marketyear,target,
               .style("left",xPos+"px")
         
             d3.select("#totaltotal")
-              .text(marketyear.Total);
+              .text(marketyear.Total+" hundred thousand 60-kg bags");
           })
     //tooltip off
           .on("mouseleave", function()
@@ -85,7 +96,7 @@ var drawTotalLabels = function(graphDim,margins)
     
     //y-axis
     labels.append("g")
-          .attr("transform","translate(5,"+(margins.top+(graphDim.height/2))+")")
+          .attr("transform","translate(10,"+(margins.top+(graphDim.height/2))+")")
           .append("text")
           .text("Production (in thousand 60-kg bags)")
           .classed("label", true)
@@ -129,7 +140,7 @@ var initTotalGraph = function(marketyear)
    
 
     var yScale = d3.scaleLinear()
-        .domain([0,180000])
+        .domain([0,180])
         .range([graph.height,0])
    
     //define line generator

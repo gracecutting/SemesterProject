@@ -6,27 +6,70 @@
 </head>
 <body>
     <h1 id="vaheader">Explanation for High Production Levels</h1>
-    <div id="intro">
-    <p> The data shows there was the highest production levels of both Arabica coffee and Robusta coffee in the market year 2018/2019. Brazil, Colombia, Ethiopia, and Vietnam are the world's highest coffee producing countries. Brazil had a record setting output of Arabica coffee in the market year 2018/19. 
-    </p>
-    </div>
     
     <div id="BPC">
     <h3>Biennial Production Cycle</h3>
-    <p> Coffee trees, particularly arabica, have a biennial bearing cycle which means they tend to alternate heavy crop and light crop years. This leads to high coffee production levels every other year. 80% of the Brazil-produced Arabica coffee for 2018/2019 market year came from the regions with trees in the on-year of the biennial production cycle. Brazil is predicted to have another high level of production during the 2020/21 market year as it will be another on-year of the biennial production cycle. Robusta coffee is not affected by the biennial production cycle.
-    </p>
+        <ul>
+            <li>Arabica coffee makes up 70% of total coffee production</li>
+            <li>These trees have biennial bearing cycle which means they tend to alternate heavy crop and light crop years</li>
+            <li>Causes high coffee production levels every other year</li>
+            <li>Brazil is the world's largeset coffee producer</li>
+            <li>80% of the Brazil-produced Arabica coffee for 2018/2019 market year came from the regions with trees in their on year</li>
+        </ul>
     </div>
     
-    <div id="FT">
-    <h3>Favorable Temperatures</h3>
-    <p> Arabica coffee grows best in the 18-21 degree Celcius temperature range. Brazil's arabica coffee trees also benefitted from the favorable weather conditions during the blossoming, cherry-setting, and fruit-forming stages. As seen in the graph, all of the top four coffee producing countries had average temperatures that dropped closer to the optimal temperature for growing Arabica coffee during the 2018/19 market year. This caused the high coffee production level of 2018/19 as well.</p>
-    </div>
     
     <div id="vadiv">
         <svg id="vagraph">
         
         </svg>
-        
+        <div class="hidden" id="vatooltip">
+            <div id="vatotal"></div>
+        </div>
+        <div class="hidden" id="braziltooltip">
+            <div id="braziltemps"></div>
+        </div>
+        <div class="hidden" id="colombiatooltip">
+            <div id="colombiatemps"></div>
+        </div>
+        <div class="hidden" id="ethiopiatooltip">
+            <div id="ethiopiatemps"></div>
+        </div>
+        <div class="hidden" id="vietnamtooltip">
+            <div id="vietnamtemps"></div>
+        </div>
+        <div class="valegend1">
+            <h3>Legend for Temperature</h3>
+            <ul>
+                <li id="Brazil">Brazil</li>
+                <li id="Colombia">Colombia</li>
+                <li id="Ethiopia">Ethiopia</li>
+                <li id="Vietnam">Vietnam</li>
+            </ul>
+        </div>
+        <div class ="valegend2">
+            <h3>Legend for Biennial Cycle</h3>
+            <ul>
+                <li id="onyearbar">On Year</li>
+                <li id="offyearbar">Off Year</li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div id="FT">
+        <h3>Favorable Temperatures</h3>
+        <ul>
+            <li>Arabica: optimal growing temperature range 18-21 degrees Celcius</li>
+            <li>Robusta: optimal growing temperature around 20.5 degrees Celcius</li>
+            <li>The graph shows all of the top four producing countries had average temperatures that dropped closer to the optimal temperatures for coffee</li>
+        </ul>
+    </div>
+    
+    <div id="conclusion">
+        <h3>Conclusion</h3>
+        <p>The assumption that coffee can grow in any location or any weather condition is wrong. Data on the total production levels and average annual temperature of top coffee producing countries show the Arabica biennial bearing cycle on year and cooler temperatures leads to an increase coffee production.</p>
+    
     </div>
     
     <script src="https://d3js.org/d3.v5.min.js"></script>
