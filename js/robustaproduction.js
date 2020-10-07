@@ -17,7 +17,7 @@ var drawRobustaPlot = function(marketyear,target,
           })
           .attr("r",3)
     //tooltip on
-          target.on("mouseeneter", function(marketyear)
+          .on("mouseenter", function(marketyear)
           {
               var xPos = d3.event.pageX;
               var yPos = d3.event.pageY;
@@ -68,7 +68,7 @@ var drawRobustaLabels = function(graphDim,margins)
     
     //title
     labels.append("text")
-          .text("Robusta Coffee Production")
+          .text("Robusta Coffee Production-No Biennial Cycle")
           .classed("title",true)
           .attr("text-anchor","middle")
           .attr("x", margins.left+(graphDim.width/2))
@@ -92,63 +92,13 @@ var drawRobustaLabels = function(graphDim,margins)
           .attr("transform","rotate(90)")
 }
 
-
-var drawRobustaLegend = function(graphDim,margins)
-{
-    var legend = d3.select("#robustagraph")
-                   .append("g")
-                   .classed("legend",true)
-                   .attr("transform", "translate("+(margins.left)+","+(margins.top)+")");
-    
-    var categories = [
-        {
-            class:"offyear",
-            name:"Off Year"
-        },
-        {
-            class:"onyear",
-            name:"On Year"
-        }
-    ]
-    
-    var entries = legend.selectAll("g")
-                        .data(categories)
-                        .enter()
-                        .append("g")
-                        .classed("legendEntry",true)
-                        .attr("class", function(category)
-                        {
-                            return category.class
-                        })
-                        .attr("transform", function(category,index)
-                        {
-                            return "translate(0,"+(index*20)+")";
-                        })
-    
-    entries.append("circle")
-           .attr("cx",8)
-           .attr("cy",5)
-           .attr("r",3)
-           .attr("class", function(stat)
-            {
-                return stat.class
-            })
-    
-    entries.append("text")
-           .text(function(category)
-            {
-                return category.name
-            })
-    .attr("x",15)
-    .attr("y",10)
-}
 //sets up several important variables and calls the functions for the visualization.
 var initRobsutaGraph = function(marketyear)
 {
     //size of screen
-    var screen = {width:600,height:400}
+    var screen = {width:450,height:400}
     //how much space on each side
-    var margins = {left:65,right:150,top:40,bottom:40}
+    var margins = {left:65,right:80,top:40,bottom:40}
     
     
     
@@ -196,7 +146,6 @@ var initRobsutaGraph = function(marketyear)
     drawRobustaPlot(marketyear,target,xScale,yScale);
     drawRobustaAxes(graph,margins,xScale,yScale);
     drawRobustaLabels(graph,margins);
-    drawRobustaLegend(graph,margins);  
     
 }
 

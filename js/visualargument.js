@@ -21,6 +21,8 @@ var drawBars = function(marketyear,target,graphDim,
             {
                return graphDim.height-yScale(marketyear.Total)
             })
+            .attr("fill", "#443730")
+            .style("opacity", 0.5)
 }
 
 //graphDim is an object that describes the width and height of the graph area.
@@ -44,7 +46,7 @@ var drawVAAxes = function(graphDim,margins,
     var zAxis = d3.axisRight(zScale)
     d3.select("#vagraph")
       .append("g")
-      .attr("trasnform","translate("+(margins.left+graphDim.width)+","+(graphDim.height+margins.top)+")")
+      .attr("trasnform","translate("+margins.right+","+(graphDim.height+margins.top)+")")
       .call(zAxis)
 }
 
@@ -90,11 +92,11 @@ var drawVALegend = function(graphDim,margins)
 
 //sets up several important variables and calls the functions for the visualization.
 var initVAGraph = function(marketyear,temperature)
-{
+{ console.log(temperature)
     //size of screen
     var screen = {width:800,height:600}
     //how much space on each side
-    var margins = {left:65,right:150,top:30,bottom:40}
+    var margins = {left:65,right:65,top:30,bottom:40}
     
     
     
@@ -128,79 +130,64 @@ var initVAGraph = function(marketyear,temperature)
        .domain([22,27])
        .range([graph.height,0])
     
-    
     //Brazil line
-    var line = d3.line()
-             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
-             .y(function(temperature) {return zScale(temperature[0])});
+    var Bline = d3.line()
+             .x(function(temperature) {return xScale(temperature.Year)})
+            .y(function(temperature) {return zScale(temperature.Brazil)});
+console.log("temperature", temperature)
 
-
-    target.append("path")
-          .append("g")
+    target.append("g")
+        .append("path")
           .datum(temperature)
           .attr("class", "line")
-          .attr("d",line)
+          .attr("d",Bline)
           .attr("fill", "none")
-          .attr("stroke", "black")
+         .attr("stroke", "#F7DAD9")
     
     //Colombia line
-    var line = d3.line()
-             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
-             .y(function(temperature) {return zScale(temperature[1])});
+    var Cline = d3.line()
+             .x(function(temperature) {return xScale(temperature.Year)})
+             .y(function(temperature) {return zScale(temperature.Colombia)});
 
 
-    target.append("path")
-          .append("g")
+    target.append("g")
+          .append("path")
           .datum(temperature)
           .attr("class", "line")
-          .attr("d",line)
+          .attr("d",Cline)
           .attr("fill", "none")
-          .attr("stroke", "black")
+          .attr("stroke", "#F7DAD9")
 
     //Ethiopia line
-    var line = d3.line()
-             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
-             .y(function(temperature) {return zScale(temperature[2])});
+    var Eline = d3.line()
+             .x(function(temperature) {return xScale(temperature.Year)})
+             .y(function(temperature) {return zScale(temperature.Ethiopia)});
 
 
-    target.append("path")
-          .append("g")
+    target.append("g")
+          .append("path")
           .datum(temperature)
           .attr("class", "line")
-          .attr("d",line)
+          .attr("d",Eline)
           .attr("fill", "none")
-          .attr("stroke", "black")
+          .attr("stroke", "#F7DAD9")
     
-    //Indonesia line
-    var line = d3.line()
-             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
-             .y(function(temperature) {return zScale(temperature[3])});
+    //Vietnam line 
+    var Vline = d3.line()
+             .x(function(temperature) {return xScale(temperature.Year)})
+             .y(function(temperature) {return zScale(temperature.Vietnam)});
 
 
-    target.append("path")
-          .append("g")
+    target.append("g")
+          .append("path")
           .datum(temperature)
           .attr("class", "line")
-          .attr("d",line)
+          .attr("d",Vline)
           .attr("fill", "none")
-          .attr("stroke", "black")
-    
-    //Vietnma line 
-    var line = d3.line()
-             .x(function(marketyear) {return xScale(marketyear.MarketYear)})
-             .y(function(temperature) {return zScale(temperature[4])});
+          .attr("stroke", "#F7DAD9")
 
-
-    target.append("path")
-          .append("g")
-          .datum(temperature)
-          .attr("class", "line")
-          .attr("d",line)
-          .attr("fill", "none")
-          .attr("stroke", "black")
-    
     drawVAAxes(graph,margins,xScale,yScale,zScale);
-    drawBars(marketyear,target,graph,xScale,yScale);
+    drawBars(marketyear,target,graph,xScale,yScale); 
     drawVALabels(graph,margins);
     drawVALegend(graph,margins);    
 }
@@ -208,10 +195,13 @@ var initVAGraph = function(marketyear,temperature)
 
 var VAPromise = d3.csv("../csv/totalproduction.csv")
 
-var VAsuccessFCN = function(marketyear)
+var VAsuccessFCN = function(values)
 {
+    var marketyear = values[0]
+    var temperature = values[1]
+    console.log(values[0])
     console.log("marketyear",marketyear);
-    initVAGraph(marketyear);
+    initVAGraph(marketyear,temperature);
     
 }
 
@@ -220,20 +210,8 @@ var VAfailFCN = function(error)
     console.log("error",error);
 }
 
-VAPromise.then(VAsuccessFCN,VAfailFCN);
-
 
 
 var tempPromise = d3.csv("../csv/temperature.csv")
-
-var tempSuccessFCN = function(temperature)
-{
-    console.log("temperature", temperature);
-}
-
-var tempFailFCN = function (error)
-{
-    console.log("error", error);
-}
-
-tempPromise.then(tempSuccessFCN,tempFailFCN);
+var promises = [VAPromise,tempPromise]
+Promise.all(promises).then(VAsuccessFCN,VAfailFCN);

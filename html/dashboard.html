@@ -1,4 +1,5 @@
 <html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     
 <head>
     <title>Dashboard</title>
@@ -7,6 +8,21 @@
     
 <body>
     <h1 id="dashheader">Dashboard</h1>
+    
+    <div id="container1">
+    <div id="legend">
+        <h3>Legend for Biennial Cycle</h3>
+        <ul>
+            <li id="onlegend">On Year</li>
+            <li>Off Year</li>
+        </ul>
+    </div>
+    <div id="hint">
+        <p>Hover over the data points to get the exact total production for that market year.</p>
+    </div>
+    </div>
+    
+    <div id="container2">
     <div id="arabicadiv">
         <svg id="arabicagraph">
     
@@ -34,12 +50,9 @@
             <div id="totaltotal"></div>
         </div>
     </div>
-    
-    <div id="tempdiv">
-        <svg id="tempgraph">
-    
-        </svg>
     </div>
+    
+   
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="../js/arabicaproduction.js"></script>
     <script src="../js/robustaproduction.js"></script>
